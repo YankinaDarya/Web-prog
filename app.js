@@ -10,7 +10,7 @@ document.getElementById('root').appendChild(tag_ul);
 var input = document.createElement("input");
 input.id = "add_task_input";
 var but2 = document.createElement("button");
-input.id = "add_task";
+but2.id = "add_task";
 document.getElementById('root').appendChild(input);
 document.getElementById('root').appendChild(but2);
 but2.innerHTML = "Добавить";
