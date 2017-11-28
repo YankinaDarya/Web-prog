@@ -5,15 +5,16 @@ import (
 	"fmt"
 )
 
-func RemoveEven(input []int) []int {
-	var ans []int;
-	for i := 0; i < len(input); i++ {
-		if input[i] % 2 == 1{
-			ans = append(ans, input[i]);
+func RemoveEven(arr []int) []int {
+	result := make([]int, 0)
+	for _, elem := range arr {
+		if elem % 2 == 1 {
+			result = append(result, elem)
 		}
 	}
-	return ans;
+	return result
 }
+
 func PowerGenerator(a int) func() int {
 	x := 1
 	return func() int {
