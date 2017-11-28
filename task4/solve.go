@@ -2,56 +2,43 @@ package main
 
 import (
 	"unicode"
-	"fmt"
 )
 
-func RemoveEven(arr []int) []int {
-	result := make([]int, 0)
-	for _, elem := range arr {
-		if elem % 2 == 1 {
-			result = append(result, elem)
+func RemoveEven(input []int) []int {
+	var ans []int;
+	for i := 0; i < len(input); i++ {
+		if input[i] % 2 == 1{
+			ans = append(ans, input[i]);
 		}
 	}
-	return result
+	return ans;
 }
 
-func PowerGenerator(a int) func() int {
-	x := 1
-	return func() int {
-		x *= a
-		return x
+func PowerGenerator(gen int) func() int{
+	i := gen;
+	return func() (ret int){
+		ret = i;
+		i *= gen;
+		return;
 	}
 }
 
-func DifferentWordsCount(x string) int {
-	str := ""
-	set := make(map[string]bool)
-	ans := 0
-	for _, c := range (x + " ") {
-		if unicode.IsLetter(c) {
-			str += string(unicode.ToLower(c))
-		} else if str != "" {
-			if !set[str] {
-				ans += 1
+func DifferentWordsCount(str string) int {
+	word := "";
+	allWords := make(map[string]int);
+	for i := 0; i < len(str); i++{
+		c := str[i];
+		if unicode.IsLetter(rune(c)){
+			word = word + string(unicode.ToLower(rune(c)));
+		} else {
+			if len(word) != 0{
+				allWords[word]++;
 			}
-			set[str] = true
-			str = ""
+			word = "";
 		}
 	}
-	return ans
+	if len(word) != 0{
+		allWords[word]++
+	}
+	return len(allWords);
 }
-
-/*func main() {
-	input := []int{0, 3, 2, 5}
-
-	var output = RemoveEven(input);
-
-	for _, elem := range output {
-		if elem % 2 == 1 {
-			fmt.Print(elem);
-		}
-	}
-
-	fmt.Println("Hello, playground")
-}*/
-
